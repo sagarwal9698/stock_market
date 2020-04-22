@@ -20,7 +20,12 @@ useful_columns =[ 'symbol', 'companyName', 'lastPrice', 'pChange', 'dayHigh', 'd
 data = pd.DataFrame(data=q, columns=useful_columns)
 
 dataToWrite = data[useful_columns]
-dataToWrite.to_csv('new.csv')
+
+from datetime import date
+date_today = date.today()
+file_name = date_today.strftime("data_" + "%d_%m_%Y" + ".csv")
+
+dataToWrite.to_csv(file_name)
 
 # data_read = pd.read_csv("data.csv")
 # data_read.drop(columns=['symbol', 'bcEndDate'])
